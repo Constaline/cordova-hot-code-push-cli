@@ -10,10 +10,7 @@ switch(cmd) {
   case 'init':
   case 'server':
   case 'deploy':
-    console.log('Running ' + cmd);
-    var command = require(path.resolve(__dirname, '..', 'dist', cmd + '.js')),
-      context = chcpContext.context(argv);
-    command.execute(context);
+    console.log('Deploy target no longer supported. ');
     break;
   default:
     console.log('TODO: Should print usage instructions.');
