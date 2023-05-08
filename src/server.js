@@ -5,7 +5,7 @@
       _ = require('lodash'),
       fs = require("fs"),
       buildDirectory = path.join(process.cwd(), '.chcpbuild'),
-      watch = require('watch'),
+      // watch = require('watch'),
       express = require('express'),
       app = express(),
       assetPort = process.env.PORT || 31284,
@@ -124,15 +124,17 @@
 
   function watchForFileChange(){
     // Monitor for file changes
-    console.log('Checking: ', sourceDirectory);
-    watch.watchTree(sourceDirectory, {filter: fileChangeFilter}, function (f, curr, prev) {
-      if (typeof f == "object" && prev === null && curr === null) {
-        // Finished walking the tree
-        // console.log('Finished');
-      } else {
-        handleFileChange(f);
-      }
-    });
+    // console.log('Checking: ', sourceDirectory);
+    console.log('ERROR: File watching has been disabled due to out-of-date watch lib. ');
+
+    // watch.watchTree(sourceDirectory, {filter: fileChangeFilter}, function (f, curr, prev) {
+    //   if (typeof f == "object" && prev === null && curr === null) {
+    //     // Finished walking the tree
+    //     // console.log('Finished');
+    //   } else {
+    //     handleFileChange(f);
+    //   }
+    // });
   }
 
   function handleFileChange(file) {

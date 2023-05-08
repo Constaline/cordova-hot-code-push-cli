@@ -2,8 +2,9 @@
 
 Tangerine-Community fork
 
-The 'deploy' command is non-working. This command is not used in our deployments therefore we have removed the "s3-sync-aws" 
-library, which was causing build issues.
+The following commands have been disabled:
+- The 'deploy' command is non-working. This command is not used in our deployments therefore we have removed the "s3-sync-aws" library, which was causing build issues.
+- The 'server' command has been modified so that it now excludes the 'watch' library. This lib uses an old version of the exec-sh lib which uses an old version of the 'merge' lib.  See [CVE-2020-28499](https://github.com/advisories/GHSA-7wpw-2hjm-89gp)
 
 Dependencies were updated 2022-11-29.
 
