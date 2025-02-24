@@ -177,20 +177,27 @@
   }
 
   function publicTunnel(port, options) {
-    var publicTunnelDfd = Q.defer(),
-        ngrok = require('ngrok');
+    // var publicTunnelDfd = Q.defer(),
+    //     ngrok = require('ngrok');
 
-    // And make it accessible from the internet
-    ngrok.connect(port, function (err, url) {
-      if (err) {
-        publicTunnelDfd.reject(err);
-        return console.log('Could not create tunnel: ', err);
-      }
+    // // And make it accessible from the internet
+    // ngrok.connect(port, function (err, url) {
+    //   if (err) {
+    //     publicTunnelDfd.reject(err);
+    //     return console.log('Could not create tunnel: ', err);
+    //   }
 
-      updateLocalEnv({ content_url: url });
+    //   updateLocalEnv({content_url: url});
 
-      publicTunnelDfd.resolve(url);
-    });
+    //   publicTunnelDfd.resolve(url);
+    // });
+
+    var publicTunnelDfd = Q.defer();
+  
+    // remove ngrok, return local URL
+    var localUrl = 'http://localhost:' + port;
+    updateLocalEnv({content_url: localUrl});
+    publicTunnelDfd.resolve(localUrl);
 
     return publicTunnelDfd.promise;
   }
